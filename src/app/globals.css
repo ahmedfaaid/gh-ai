@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.header {
+  @apply h-20 bg-indigo-600 flex items-center justify-center;
+}
+
+.header h1 {
+  @apply text-white text-2xl font-light;
+}
+
+.header h1 span {
+  @apply font-semibold;
+}
+
+.header h1 span:first-of-type {
+  @apply text-red-600;
+}
+
+.header h1 span:nth-of-type(2) {
+  @apply text-yellow-400;
+}
+
+.header h1 span:last-of-type {
+  @apply text-green-600;
+}
