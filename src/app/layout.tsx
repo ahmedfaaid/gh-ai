@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Noto_Sans } from 'next/font/google';
-import Script from 'next/script';
 import './globals.css';
 
 const noto = Noto_Sans({
@@ -20,7 +19,6 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={noto.className}>{children}</body>
-      <Script src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.min.mjs'></Script>
     </html>
   );
 }
