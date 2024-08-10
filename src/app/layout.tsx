@@ -8,8 +8,8 @@ const noto = Noto_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Alee AI',
-  description: 'AI testing and stuff'
+  title: 'GhanaGPT',
+  description: 'GPT assistant providing information about Ghana'
 };
 
 export default function RootLayout({
