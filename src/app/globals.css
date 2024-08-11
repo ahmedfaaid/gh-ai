@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .header {
-  @apply h-20 bg-indigo-600 flex items-center justify-center;
+  @apply h-20 bg-indigo-600 flex items-center justify-center w-full fixed top-0 z-10;
 }
 
 .header h1 {
@@ -24,4 +24,14 @@
 
 .header h1 span:last-of-type {
   @apply text-green-600;
+}
+
+.chatinput {
+  @apply flex-grow m-2 py-4 px-4 mr-1 rounded-full border border-gray-300 resize-none focus:outline-indigo-600;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.chatinput::-webkit-scrollbar {
+  display: none;
 }

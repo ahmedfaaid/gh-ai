@@ -1,14 +1,12 @@
+'use client';
+import Chat from '@/components/chat';
+import Header from '@/components/header';
+
 export default function Home() {
   return (
-    <>
-      <header>
-        <h1>
-          Ghana<span>GPT</span>
-        </h1>
-      </header>
-      <main>
-        <h1>Hello</h1>
-      </main>
-    </>
+    <div className='min-h-screen'>
+      <Header />
+      <Chat />
+    </div>
   );
 }
