@@ -8,7 +8,7 @@ export default function Home() {
   const { handleInputChange, handleSubmit, input, messages } = useChat();
 
   return (
-    <div className='min-h-screen'>
+    <div className='min-h-screen w-screen'>
       <Header />
       <Chat messages={messages} />
       <ChatInput

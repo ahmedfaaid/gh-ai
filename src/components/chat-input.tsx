@@ -12,10 +12,10 @@ export default function ChatInput({
   input
 }: ChatInputProps) {
   return (
-    <div className='fixed bottom-0 w-full'>
+    <div className='fixed bottom-0 left-0 right-0 bg-indigo-200'>
       <form
         onSubmit={handleSubmit}
-        className='flex justify-between bg-indigo-200'
+        className='flex justify-between w-full md:w-[768px] md:mx-auto'
       >
         <textarea
           rows={1}

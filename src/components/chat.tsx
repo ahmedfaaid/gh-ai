@@ -17,7 +17,10 @@ export default function Chat({ messages }: ChatProps) {
   }, [messages]);
 
   return (
-    <div className='p-4 my-20 min-h-[calc(100vh-160px)]' ref={chatBox}>
+    <div
+      className='p-4 my-20 min-h-[calc(100vh-160px)] w-full md:w-[768px] md:mx-auto'
+      ref={chatBox}
+    >
       {messages.map((message, index) => {
         if (message.role === 'user') {
           return (
