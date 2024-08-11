@@ -1,10 +1,16 @@
-import { useChat } from 'ai/react';
+'use client';
 
-export default function ChatInput() {
-  const { handleInputChange, handleSubmit, input } = useChat({
-    credentials: 'include'
-  });
+interface ChatInputProps {
+  handleSubmit: () => void;
+  handleInputChange: any;
+  input: any;
+}
 
+export default function ChatInput({
+  handleSubmit,
+  handleInputChange,
+  input
+}: ChatInputProps) {
   return (
     <div className='fixed bottom-0 w-full'>
       <form

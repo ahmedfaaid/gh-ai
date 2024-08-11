@@ -1,16 +1,23 @@
 'use client';
-import { useChat } from 'ai/react';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import AiChat from './ai-chat';
 import UserChat from './user-chat';
 
-export default function Chat() {
-  const { messages } = useChat({
-    credentials: 'include'
-  });
+interface ChatProps {
+  messages: any[];
+}
+
+export default function Chat({ messages }: ChatProps) {
+  const chatBox = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (chatBox.current) {
+      chatBox.current.scrollTop = chatBox.current.scrollHeight;
+    }
+  }, [messages]);
 
   return (
-    <div className='p-4 my-20'>
+    <div className='p-4 my-20 h-[calc(100vh-160px)]' ref={chatBox}>
       {messages.map((message, index) => {
         if (message.role === 'user') {
           return (
