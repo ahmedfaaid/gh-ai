@@ -5,7 +5,9 @@ import Header from '@/components/header';
 import { useChat } from 'ai/react';
 
 export default function Home() {
-  const { handleInputChange, handleSubmit, input, messages } = useChat();
+  const { handleInputChange, handleSubmit, input, messages } = useChat({
+    api: '/api/with-langchain'
+  });
 
   return (
     <div className='min-h-screen w-screen'>
