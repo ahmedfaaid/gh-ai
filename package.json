@@ -10,11 +10,8 @@
   },
   "dependencies": {
     "@ai-sdk/openai": "^0.0.44",
-    "@langchain/community": "^0.2.25",
-    "@langchain/openai": "^0.2.6",
+    "@langchain/core": "^0.2.23",
     "ai": "^3.3.5",
-    "cheerio": "^1.0.0",
-    "langchain": "^0.2.15",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18"
