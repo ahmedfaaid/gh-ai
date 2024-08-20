@@ -18,7 +18,7 @@ export default function Chat({ messages }: ChatProps) {
 
   return (
     <div
-      className='p-4 my-20 min-h-[calc(100vh-160px)] w-full md:w-[768px] md:mx-auto'
+      className='p-4 min-h-[calc(100vh-160px)] w-full md:w-[768px] mx-auto fixed inset-y-20 overflow-y-scroll left-1/2 -translate-x-1/2'
       ref={chatBox}
     >
       {messages.map((message, index) => {
