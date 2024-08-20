@@ -9,7 +9,8 @@ export async function POST(req: Request) {
     apiKey: 'lm-studio'
   });
 
-  const model = openai('lmstudio-community/Meta-Llama-3.1-8B-Instruct-GGUF');
+  // const model = openai('lmstudio-community/Meta-Llama-3.1-8B-Instruct-GGUF');
+  const model = openai('TheBloke/Mistral-7B-Instruct-v0.2-GGUF');
 
   const response = await streamText({
     model,
