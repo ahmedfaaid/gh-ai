@@ -1,8 +1,8 @@
 import { QA_PROMPT_TEMPLATE } from '@/lib/constants';
 import { getVectorStore } from '@/lib/getVectorStore';
+import { llm } from '@/lib/llm';
 import { StringOutputParser } from '@langchain/core/output_parsers';
 import { ChatPromptTemplate } from '@langchain/core/prompts';
-import { ChatOpenAI } from '@langchain/openai';
 import { LangChainAdapter, Message as VercelChatMessage } from 'ai';
 import { createStuffDocumentsChain } from 'langchain/chains/combine_documents';
 import { NextRequest } from 'next/server';
@@ -25,15 +25,6 @@ export async function POST(req: NextRequest) {
     const vectorStore = await getVectorStore();
     const retriever = vectorStore.asRetriever();
 
-    const llm = new ChatOpenAI({
-      temperature: 0,
-      apiKey: 'lm-studio',
-      streaming: true,
-      model: 'TheBloke/Mistral-7B-Instruct-v0.2-GGUF',
-      configuration: {
-        baseURL: 'http://localhost:1234/v1'
-      }
-    });
     const prompt = ChatPromptTemplate.fromTemplate(QA_PROMPT_TEMPLATE);
 
     const combineDocsChain = await createStuffDocumentsChain({

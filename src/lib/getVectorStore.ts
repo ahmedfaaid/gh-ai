@@ -1,21 +1,12 @@
 import { CheerioWebBaseLoader } from '@langchain/community/document_loaders/web/cheerio';
 import { HNSWLib } from '@langchain/community/vectorstores/hnswlib';
-import { OpenAIEmbeddings } from '@langchain/openai';
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import { VECTOR_STORE_PATH, WEBSITE_URL } from './constants';
+import { embeddings } from './llm';
 
 export async function getVectorStore() {
   try {
-    return await HNSWLib.load(
-      VECTOR_STORE_PATH,
-      new OpenAIEmbeddings({
-        apiKey: 'lm-studio',
-        model: 'nomic-ai/nomic-embed-text-v1.5-GGUF',
-        configuration: {
-          baseURL: 'http://localhost:1234/v1'
-        }
-      })
-    );
+    return await HNSWLib.load(VECTOR_STORE_PATH, embeddings);
   } catch (error) {
     console.log('Vector store not found. Creating a new one...');
 
@@ -34,14 +25,6 @@ export async function getVectorStore() {
       chunkOverlap: 200
     });
     const splitDocs = await textSplitter.splitDocuments(docs);
-
-    const embeddings = new OpenAIEmbeddings({
-      apiKey: 'lm-studio',
-      model: 'nomic-ai/nomic-embed-text-v1.5-GGUF',
-      configuration: {
-        baseURL: 'http://localhost:1234/v1'
-      }
-    });
 
     const vectorStore = await HNSWLib.fromDocuments(splitDocs, embeddings);
     await vectorStore.save(VECTOR_STORE_PATH);
