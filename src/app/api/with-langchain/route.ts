@@ -1,9 +1,10 @@
 import { QA_PROMPT_TEMPLATE } from '@/lib/constants';
+import { formatMessage } from '@/lib/fns';
 import { getVectorStore } from '@/lib/getVectorStore';
 import { llm } from '@/lib/llm';
 import { StringOutputParser } from '@langchain/core/output_parsers';
 import { ChatPromptTemplate } from '@langchain/core/prompts';
-import { LangChainAdapter, Message as VercelChatMessage } from 'ai';
+import { LangChainAdapter } from 'ai';
 import { createStuffDocumentsChain } from 'langchain/chains/combine_documents';
 import { NextRequest } from 'next/server';
 
@@ -11,10 +12,6 @@ import { NextRequest } from 'next/server';
   Does not fully achieve the goal of using only the context
   Requires additional engineering
 */
-
-const formatMessage = (message: VercelChatMessage) => {
-  return `${message.role}: ${message.content}`;
-};
 
 export async function POST(req: NextRequest) {
   try {
