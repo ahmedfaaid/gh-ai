@@ -20,7 +20,9 @@ export async function getVectorStore() {
     console.log('Vector store not found. Creating a new one...');
 
     // Create new vector store
-    const loader = new CheerioWebBaseLoader(WEBSITE_URL, { selector: 'main' });
+    const loader = new CheerioWebBaseLoader(WEBSITE_URL as string, {
+      selector: 'main'
+    });
     const docs = await loader.load();
     // docs[0].pageContent = docs[0].pageContent.replace(/\s*(^|\n)\s*/g, '$1');
     docs[0].pageContent = docs[0].pageContent
