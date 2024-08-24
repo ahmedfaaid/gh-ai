@@ -1,5 +1,3 @@
-import { existsSync } from 'fs';
-// import 'pdf-parse';
 import { PDFLoader } from '@langchain/community/document_loaders/fs/pdf';
 import { HNSWLib } from '@langchain/community/vectorstores/hnswlib';
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
@@ -8,8 +6,6 @@ import { PDF_VECTOR_STORE_PATH } from './constants';
 import { embeddings } from './llm';
 
 export async function getPDFVectorStore() {
-  console.log('Vector Store Path:', PDF_VECTOR_STORE_PATH);
-  console.log('Vector Store exists:', existsSync(PDF_VECTOR_STORE_PATH));
   try {
     return await HNSWLib.load(PDF_VECTOR_STORE_PATH, embeddings);
   } catch (error) {
