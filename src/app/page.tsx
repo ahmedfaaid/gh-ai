@@ -6,7 +6,7 @@ import { useChat } from 'ai/react';
 
 export default function Home() {
   const { handleInputChange, handleSubmit, input, messages } = useChat({
-    api: '/api/with-langchain'
+    api: '/api/with-pdf'
   });
 
   return (
