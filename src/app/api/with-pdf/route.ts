@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
 
     const promptMessages = [
       SystemMessagePromptTemplate.fromTemplate(SYSTEM_PROMPT_TEMPLATE),
-      HumanMessagePromptTemplate.fromTemplate('{input}')
+      HumanMessagePromptTemplate.fromTemplate('{question}')
     ];
     const prompt = ChatPromptTemplate.fromMessages(promptMessages);
     const chain = await createStuffDocumentsChain({
@@ -33,8 +33,9 @@ export async function POST(req: NextRequest) {
     });
     const context = await retriever.invoke(currentMessageContent);
     const response = await chain.stream({
-      input: currentMessageContent,
-      context
+      question: currentMessageContent,
+      context,
+      chat_history: formattedPreviousMessages
     });
 
     return LangChainAdapter.toDataStreamResponse(response);
